@@ -14,6 +14,7 @@ chmod u+x /usr/local/bin/wings
 echo "Cấu hình Wings..."
 
 read -p "Nhập STT Node: " node
+read -p "Nhập token Panel: " token
 echo "[Unit]
 Description=Pterodactyl Wings Daemon
 After=docker.service
@@ -36,7 +37,7 @@ WantedBy=multi-user.target" | sudo tee /etc/systemd/system/wings.service
 
 echo "Cấu hình Wings..."
 
-cd /etc/pterodactyl && sudo wings configure --panel-url http://panel.vpsbumboo.com --token ptla_ERgNFXH0ZoVNKpTEyXtOWEh1hd5EuqH8uRAIIgmGsbH --node $node
+cd /etc/pterodactyl && sudo wings configure --panel-url http://panel.vpsbumboo.com --token $token --node $node
 systemctl enable wings.service
 systemctl start wings.service
 echo "Xong! Wings Daemon đã được cài đặt và token đã được cấu hình."
